@@ -25,18 +25,22 @@ index.html, Dockerfile, runner.sh and nginx.conf
 	```
 	kubectl create ns <namespace-name>
 	```
+
 2. Apply kubernetes deployment mentioning the docker image previously created in the deployment.yaml file: 
     	
 	 ```
    	 kubectl create -f <deployment.yaml>
    	 ```
+
 3. Expose the service to a specific port: (e.g- port 32400):
 
 ```
    	 k expose deploy <deployment-name> -n <namepsace-name> --type=NodePort --overrides '{ "apiVersion": "v1","spec":{"ports": 	   [{"port":80,"protocol":"TCP","targetPort":80,"nodePort":32400}]}}'
 ```
+
 4. Expose a service on a random port:
 
     	 ```
    	 k expose deploy <deployment-name> -n <namepsace-name> --type=NodePort
    	 ```
+	 
